@@ -1,0 +1,4 @@
+applications:
+- name: tari 
+  host: tari
+  memory: 256M
