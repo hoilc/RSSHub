@@ -11298,10 +11298,10 @@ remark-parse@^8.0.0:
     vfile-location "^3.0.0"
     xtend "^4.0.1"
 
-remark-preset-prettier@0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/remark-preset-prettier/-/remark-preset-prettier-0.4.1.tgz#9b55d2a71d16931eeea365724b5b1a09c9a0f6ef"
-  integrity sha512-m+yzI9LN/dkVq/HUYR3aEAjvDBO4hZMwgq245RBYUzSKXZPboMTlxBTgBuK7Tcw5CKJphjoL31slQQcDu1KGZQ==
+remark-preset-prettier@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/remark-preset-prettier/-/remark-preset-prettier-2.0.0.tgz#2741e568fd415d408aa39fc20346e95d93e96145"
+  integrity sha512-1Y80d7Z71pS65vWlq4G1vgpJ9CZXPvA9atrNV00dVZFmjmanzwcIpaxlAUBfq30ud5+f+xdLsLe5b1rUco+Uqw==
 
 remark-stringify@^8.0.0:
   version "8.1.1"
