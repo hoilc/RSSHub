@@ -46,10 +46,10 @@ importers:
         version: 4.2.0(patch_hash=2dfb8d9be036009fcc315551cb39b08f478c9a279511267cf570a3486073d39b)
       '@hono/node-server':
         specifier: 1.19.3
-        version: 1.19.3(hono@4.9.7)
+        version: 1.19.3(hono@4.9.8)
       '@hono/zod-openapi':
         specifier: 0.19.10
-        version: 0.19.10(hono@4.9.7)(zod@3.25.76)
+        version: 0.19.10(hono@4.9.8)(zod@3.25.76)
       '@notionhq/client':
         specifier: 5.1.0
         version: 5.1.0
@@ -82,7 +82,7 @@ importers:
         version: 0.0.25
       '@scalar/hono-api-reference':
         specifier: 0.9.18
-        version: 0.9.18(hono@4.9.7)
+        version: 0.9.18(hono@4.9.8)
       '@sentry/node':
         specifier: 10.12.0
         version: 10.12.0
@@ -138,8 +138,8 @@ importers:
         specifier: 160.0.0
         version: 160.0.0
       hono:
-        specifier: 4.9.7
-        version: 4.9.7
+        specifier: 4.9.8
+        version: 4.9.8
       html-to-text:
         specifier: 9.0.5
         version: 9.0.5
@@ -219,8 +219,8 @@ importers:
         specifier: 2.5.9
         version: 2.5.9
       query-string:
-        specifier: 9.3.0
-        version: 9.3.0
+        specifier: 9.3.1
+        version: 9.3.1
       rate-limiter-flexible:
         specifier: 7.3.1
         version: 7.3.1
@@ -388,8 +388,8 @@ importers:
         specifier: 2.1.9
         version: 2.1.9(vitest@2.1.9(@types/node@24.5.2)(jsdom@27.0.0(bufferutil@4.0.9)(postcss@8.5.6)(utf-8-validate@5.0.10))(msw@2.4.3(typescript@5.9.2)))
       discord-api-types:
-        specifier: 0.38.25
-        version: 0.38.25
+        specifier: 0.38.26
+        version: 0.38.26
       domhandler:
         specifier: 5.0.3
         version: 5.0.3
@@ -403,8 +403,8 @@ importers:
         specifier: 9.0.0
         version: 9.0.0(@types/node@24.5.2)(eslint@9.35.0(jiti@2.5.1))
       eslint-plugin-n:
-        specifier: 17.23.0
-        version: 17.23.0(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2)
+        specifier: 17.23.1
+        version: 17.23.1(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2)
       eslint-plugin-prettier:
         specifier: 5.5.4
         version: 5.5.4(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@9.35.0(jiti@2.5.1)))(eslint@9.35.0(jiti@2.5.1))(prettier@3.6.2)
@@ -3330,8 +3330,8 @@ packages:
     resolution: {integrity: sha512-dSApZXgx29qO/6AVigdsoC6HSvaHWinJ4HTRPKrlMAxX71FgPzn/WEWbgM+aB1PlKD9IfSC3Ir2ouYYQR1uy+g==}
     engines: {node: '>=18.17.0'}
 
-  discord-api-types@0.38.25:
-    resolution: {integrity: sha512-3edaLHuCdzzfTL1OCpl98G3mrlf+45FpxY+8f+5dRLnZD8R6QzIhapoCefqz6mhaygD+iqTVLtD4u6j57PRiFw==}
+  discord-api-types@0.38.26:
+    resolution: {integrity: sha512-xpmPviHjIJ6dFu1eNwNDIGQ3N6qmPUUYFVAx/YZ64h7ZgPkTcKjnciD8bZe8Vbeji7yS5uYljyciunpq0J5NSw==}
 
   doctrine@3.0.0:
     resolution: {integrity: sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==}
@@ -3564,8 +3564,8 @@ packages:
     peerDependencies:
       eslint: '>=8'
 
-  eslint-plugin-n@17.23.0:
-    resolution: {integrity: sha512-aPePGxUr5LezcXmMRBF83eK1MmqUYY1NdLdHC+jdpfc5b98eL7yDXY20gXJ6DcTxrHBhrLsfYYqo7J+m0h9YXQ==}
+  eslint-plugin-n@17.23.1:
+    resolution: {integrity: sha512-68PealUpYoHOBh332JLLD9Sj7OQUDkFpmcfqt8R9sySfFSeuGJjMTJQvCRRB96zO3A/PELRLkPrzsHmzEFQQ5A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: '>=8.23.0'
@@ -3984,8 +3984,8 @@ packages:
   hmacsha1@1.0.0:
     resolution: {integrity: sha512-4FP6J0oI8jqb6gLLl9tSwVdosWJ/AKSGJ+HwYf6Ixe4MUcEkst4uWzpVQrNOCin0fzTRQbXV8ePheU8WiiDYBw==}
 
-  hono@4.9.7:
-    resolution: {integrity: sha512-t4Te6ERzIaC48W3x4hJmBwgNlLhmiEdEE5ViYb02ffw4ignHNHa5IBtPjmbKstmtKa8X6C35iWwK4HaqvrzG9w==}
+  hono@4.9.8:
+    resolution: {integrity: sha512-JW8Bb4RFWD9iOKxg5PbUarBYGM99IcxFl2FPBo2gSJO11jjUDqlP1Bmfyqt8Z/dGhIQ63PMA9LdcLefXyIasyg==}
     engines: {node: '>=16.9.0'}
 
   hookable@5.5.3:
@@ -5164,8 +5164,8 @@ packages:
   quansync@0.2.11:
     resolution: {integrity: sha512-AifT7QEbW9Nri4tAwR5M/uzpBuqfZf+zwaEM/QkzEjj7NBuFD2rBuy0K3dE+8wltbezDV7JMA0WfnCPYRSYbXA==}
 
-  query-string@9.3.0:
-    resolution: {integrity: sha512-IQHOQ9aauHAApwAaUYifpEyLHv6fpVGVkMOnwPzcDScLjbLj8tLsILn6unSW79NafOw1llh8oK7Gd0VwmXBFmA==}
+  query-string@9.3.1:
+    resolution: {integrity: sha512-5fBfMOcDi5SA9qj5jZhWAcTtDfKF5WFdd2uD9nVNlbxVv1baq65aALy6qofpNEGELHvisjjasxQp7BlM9gvMzw==}
     engines: {node: '>=18'}
 
   querystringify@2.2.0:
@@ -7309,21 +7309,21 @@ snapshots:
       '@eslint/core': 0.15.2
       levn: 0.4.1
 
-  '@hono/node-server@1.19.3(hono@4.9.7)':
+  '@hono/node-server@1.19.3(hono@4.9.8)':
     dependencies:
-      hono: 4.9.7
+      hono: 4.9.8
 
-  '@hono/zod-openapi@0.19.10(hono@4.9.7)(zod@3.25.76)':
+  '@hono/zod-openapi@0.19.10(hono@4.9.8)(zod@3.25.76)':
     dependencies:
       '@asteasolutions/zod-to-openapi': 7.3.4(zod@3.25.76)
-      '@hono/zod-validator': 0.7.2(hono@4.9.7)(zod@3.25.76)
-      hono: 4.9.7
+      '@hono/zod-validator': 0.7.2(hono@4.9.8)(zod@3.25.76)
+      hono: 4.9.8
       openapi3-ts: 4.5.0
       zod: 3.25.76
 
-  '@hono/zod-validator@0.7.2(hono@4.9.7)(zod@3.25.76)':
+  '@hono/zod-validator@0.7.2(hono@4.9.8)(zod@3.25.76)':
     dependencies:
-      hono: 4.9.7
+      hono: 4.9.8
       zod: 3.25.76
 
   '@humanfs/core@0.19.1': {}
@@ -8188,10 +8188,10 @@ snapshots:
     dependencies:
       '@scalar/types': 0.2.15
 
-  '@scalar/hono-api-reference@0.9.18(hono@4.9.7)':
+  '@scalar/hono-api-reference@0.9.18(hono@4.9.8)':
     dependencies:
       '@scalar/core': 0.3.16
-      hono: 4.9.7
+      hono: 4.9.8
 
   '@scalar/openapi-types@0.3.7':
     dependencies:
@@ -9278,7 +9278,7 @@ snapshots:
 
   directory-import@3.3.2: {}
 
-  discord-api-types@0.38.25: {}
+  discord-api-types@0.38.26: {}
 
   doctrine@3.0.0:
     dependencies:
@@ -9562,7 +9562,7 @@ snapshots:
       eslint: 9.35.0(jiti@2.5.1)
       eslint-compat-utils: 0.5.1(eslint@9.35.0(jiti@2.5.1))
 
-  eslint-plugin-n@17.23.0(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2):
+  eslint-plugin-n@17.23.1(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2):
     dependencies:
       '@eslint-community/eslint-utils': 4.9.0(eslint@9.35.0(jiti@2.5.1))
       enhanced-resolve: 5.18.3
@@ -9810,7 +9810,7 @@ snapshots:
       he: 1.2.0
       hmacsha1: 1.0.0
       oauth-1.0a: 2.2.6
-      query-string: 9.3.0
+      query-string: 9.3.1
 
   fast-deep-equal@3.1.3: {}
 
@@ -10110,7 +10110,7 @@ snapshots:
 
   hmacsha1@1.0.0: {}
 
-  hono@4.9.7: {}
+  hono@4.9.8: {}
 
   hookable@5.5.3: {}
 
@@ -11431,7 +11431,7 @@ snapshots:
 
   quansync@0.2.11: {}
 
-  query-string@9.3.0:
+  query-string@9.3.1:
     dependencies:
       decode-uri-component: 0.4.1
       filter-obj: 5.1.0
