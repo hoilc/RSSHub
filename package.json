@@ -135,7 +135,7 @@
         "winston": "3.18.3",
         "xxhash-wasm": "1.1.0",
         "youtube-caption-extractor": "1.9.1",
-        "youtubei.js": "15.1.1",
+        "youtubei.js": "16.0.0",
         "zod": "3.25.76"
     },
     "devDependencies": {
@@ -172,7 +172,7 @@
         "domhandler": "5.0.3",
         "eslint": "9.37.0",
         "eslint-config-prettier": "10.1.8",
-        "eslint-nibble": "9.0.0",
+        "eslint-nibble": "9.1.0",
         "eslint-plugin-n": "17.23.1",
         "eslint-plugin-prettier": "5.5.4",
         "eslint-plugin-unicorn": "61.0.2",
