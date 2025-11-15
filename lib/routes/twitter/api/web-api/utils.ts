@@ -3,33 +3,15 @@ import { baseUrl, gqlFeatures, bearerToken, gqlMap, thirdPartySupportedAPI } fro
 import { config } from '@/config';
 import queryString from 'query-string';
 import { Cookie, CookieJar } from 'tough-cookie';
-import { CookieAgent, CookieClient } from 'http-cookie-agent/undici';
-import { ProxyAgent } from 'undici';
+import { CookieAgent, cookie as HttpCookieAgentCookie } from 'http-cookie-agent/undici';
+import { ProxyAgent, Client } from 'undici';
 import cache from '@/utils/cache';
 import logger from '@/utils/logger';
 import ofetch from '@/utils/ofetch';
 import proxy from '@/utils/proxy';
 import login from './login';
-import { zstdDecompressSync } from 'node:zlib';
 
 let authTokenIndex = 0;
-
-const fetchThirdPartyTimeline = async (endpoint: string, params: Record<string, any>) => {
-    const response = await ofetch.raw(`${config.twitter.thirdPartyApi}${gqlMap[endpoint]}`, {
-        method: 'GET',
-        params,
-        responseType: 'arrayBuffer',
-    });
-
-    const encoding = response.headers.get('content-encoding')?.toLowerCase() ?? '';
-    let body = Buffer.from(response._data as ArrayBuffer);
-
-    if (encoding.includes('zstd')) {
-        body = zstdDecompressSync(body);
-    }
-
-    return JSON.parse(body.toString('utf-8'));
-};
 
 const token2Cookie = async (token) => {
     const c = await cache.get(`twitter:cookie:${token}`);
@@ -41,7 +23,7 @@ const token2Cookie = async (token) => {
     try {
         const agent = proxy.proxyUri
             ? new ProxyAgent({
-                  factory: (origin, opts) => new CookieClient(origin as string, { ...opts, cookies: { jar } }),
+                  factory: (origin, opts) => new Client(origin as string, opts).compose(HttpCookieAgentCookie({ jar })),
                   uri: proxy.proxyUri,
               })
             : new CookieAgent({ cookies: { jar } });
@@ -128,7 +110,7 @@ export const twitterGot = async (
         const jar = CookieJar.deserializeSync(cookie as any);
         const agent = proxy.proxyUri
             ? new ProxyAgent({
-                  factory: (origin, opts) => new CookieClient(origin as string, { ...opts, cookies: { jar } }),
+                  factory: (origin, opts) => new Client(origin as string, opts).compose(HttpCookieAgentCookie({ jar })),
                   uri: proxy.proxyUri,
               })
             : new CookieAgent({ cookies: { jar } });
@@ -247,8 +229,14 @@ export const paginationTweets = async (endpoint: string, userId: number | undefi
 
     const fetchData = async () => {
         if (config.twitter.thirdPartyApi && thirdPartySupportedAPI.includes(endpoint)) {
-            const response = await fetchThirdPartyTimeline(endpoint, params);
-            return response.data;
+            const { data } = await ofetch(`${config.twitter.thirdPartyApi}${gqlMap[endpoint]}`, {
+                method: 'GET',
+                params,
+                headers: {
+                    'accept-encoding': 'gzip',
+                },
+            });
+            return data;
         }
         const { data } = await twitterGot(baseUrl + gqlMap[endpoint], params);
         return data;
