@@ -34,8 +34,8 @@
         "prepublishOnly": "npm run build:lib",
         "dev": "cross-env NODE_ENV=dev NODE_OPTIONS='--max-http-header-size=32768' tsx watch --inspect --clear-screen=false lib/index.ts",
         "dev:cache": "cross-env NODE_ENV=production NODE_OPTIONS='--max-http-header-size=32768' tsx watch --clear-screen=false lib/index.ts",
-        "format": "prettier \"**/*.{ts,tsx,js,json}\" --write --experimental-cli && eslint --cache --fix \"**/*.{ts,tsx,js,yml}\" --concurrency auto",
-        "format:check": "prettier \"**/*.{ts,tsx,js,json}\" --check --experimental-cli && eslint --cache \"**/*.{ts,tsx,js,yml}\" --concurrency auto",
+        "format": "eslint --cache --fix \"**/*.{ts,tsx,js,yml}\" --concurrency auto && prettier . --write --experimental-cli",
+        "format:check": "eslint --cache \"**/*.{ts,tsx,js,yml}\" --concurrency auto && prettier . --check --experimental-cli",
         "format:staged": "lint-staged",
         "lint": "eslint --cache . --concurrency auto",
         "prepare": "husky || true",
@@ -48,15 +48,13 @@
         "vitest:watch": "cross-env NODE_ENV=test vitest --watch"
     },
     "lint-staged": {
-        "*.js": [
-            "prettier --ignore-unknown --ignore-path ./.gitignore --write",
-            "eslint --cache --fix --concurrency auto"
+        "!(*.ts|*.tsx|*.js|*.yml)": [
+            "prettier --write --ignore-unknown"
         ],
-        "*.{ts,tsx}": [
-            "prettier --ignore-unknown --ignore-path ./.gitignore --write",
-            "eslint --cache --fix --concurrency auto"
-        ],
-        "*.yml": "eslint --cache --fix --concurrency auto"
+        "*.{ts,tsx,js,yml}": [
+            "eslint --cache --fix --concurrency auto",
+            "prettier --write --ignore-unknown"
+        ]
     },
     "dependencies": {
         "@bbob/html": "4.3.1",
@@ -94,7 +92,7 @@
         "google-play-scraper": "10.1.2",
         "googleapis": "166.0.0",
         "header-generator": "2.1.77",
-        "hono": "4.10.6",
+        "hono": "4.10.7",
         "html-to-text": "9.0.5",
         "http-cookie-agent": "7.0.3",
         "https-proxy-agent": "7.0.6",
@@ -175,16 +173,14 @@
         "@types/supertest": "6.0.3",
         "@typescript-eslint/eslint-plugin": "8.48.0",
         "@typescript-eslint/parser": "8.48.0",
-        "@vercel/nft": "1.1.0",
+        "@vercel/nft": "1.1.1",
         "@vitest/coverage-v8": "4.0.9",
         "discord-api-types": "0.38.34",
         "domhandler": "5.0.3",
         "eslint": "9.39.1",
-        "eslint-config-prettier": "10.1.8",
         "eslint-nibble": "9.1.1",
         "eslint-plugin-import-x": "4.16.1",
         "eslint-plugin-n": "17.23.1",
-        "eslint-plugin-prettier": "5.5.4",
         "eslint-plugin-simple-import-sort": "12.1.1",
         "eslint-plugin-unicorn": "62.0.0",
         "eslint-plugin-yml": "1.19.0",
