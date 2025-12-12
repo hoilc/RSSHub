@@ -78,8 +78,8 @@ importers:
         specifier: 0.9.28
         version: 0.9.28(hono@4.10.8)
       '@sentry/node':
-        specifier: 10.29.0
-        version: 10.29.0
+        specifier: 10.30.0
+        version: 10.30.0
       aes-js:
         specifier: 3.1.2
         version: 3.1.2
@@ -150,8 +150,8 @@ importers:
         specifier: 0.7.1
         version: 0.7.1
       imapflow:
-        specifier: 1.1.1
-        version: 1.1.1
+        specifier: 1.2.0
+        version: 1.2.0
       instagram-private-api:
         specifier: 1.46.1
         version: 1.46.1
@@ -2271,12 +2271,12 @@ packages:
   '@selderee/plugin-htmlparser2@0.11.0':
     resolution: {integrity: sha512-P33hHGdldxGabLFjPPpaTxVolMrzrcegejx+0GxjrIb9Zv48D8yAIA/QTDR2dFl7Uz7urX8aX6+5bCZslr+gWQ==}
 
-  '@sentry/core@10.29.0':
-    resolution: {integrity: sha512-olQ2DU9dA/Bwsz3PtA9KNXRMqBWRQSkPw+MxwWEoU1K1qtiM9L0j6lbEFb5iSY3d7WYD5MB+1d5COugjSBrHtw==}
+  '@sentry/core@10.30.0':
+    resolution: {integrity: sha512-IfNuqIoGVO9pwphwbOptAEJJI1SCAfewS5LBU1iL7hjPBHYAnE8tCVzyZN+pooEkQQ47Q4rGanaG1xY8mjTT1A==}
     engines: {node: '>=18'}
 
-  '@sentry/node-core@10.29.0':
-    resolution: {integrity: sha512-f/Y0okHhPPb5HnYNBqCivJ2YuXtSadvcIx16dzU5mHQxZhgGednUCPEX7rsvPcd4HneQz12HKLqxbAmNu+b3FA==}
+  '@sentry/node-core@10.30.0':
+    resolution: {integrity: sha512-IDgCf0sTtHpnMfdM7nnqdkjFPzNrMKQUZCeoW2msAb+fXIfev2nae43fL4ffGL+S3rnkZp3OL8HDG/4C+Q0iZA==}
     engines: {node: '>=18'}
     peerDependencies:
       '@opentelemetry/api': ^1.9.0
@@ -2287,12 +2287,12 @@ packages:
       '@opentelemetry/sdk-trace-base': ^1.30.1 || ^2.1.0 || ^2.2.0
       '@opentelemetry/semantic-conventions': ^1.37.0
 
-  '@sentry/node@10.29.0':
-    resolution: {integrity: sha512-9j8VzV06VCj+H8tlxpfa7BNN4HzH5exv68WOufdMTXzzWLOXnzrdNDoYplm1G2S3LMvWsc1SVI3a8A0yBY7oWg==}
+  '@sentry/node@10.30.0':
+    resolution: {integrity: sha512-Ov++em+Y4H4gNRW9u3d9JDF46BNvnCNW4/jJ/6Dsw0T+Em9dyLXfqyDBEe8VKD0E7ZjuO+Z1W3ldpbhCj5HlSg==}
     engines: {node: '>=18'}
 
-  '@sentry/opentelemetry@10.29.0':
-    resolution: {integrity: sha512-5QvtAwS73HlI/+OTF1poAFELzsc0se+PHmMsXGGrOeNBvjCr3ZE8qvke09aeMn7uRImf3Nc9J6i2KtSHJnbKPA==}
+  '@sentry/opentelemetry@10.30.0':
+    resolution: {integrity: sha512-b4q868+L2uhqKn4xIlf+VLDthBLnUzG60FceJ2Oq8nD2Lk70F2ZxLfHA2eL1F6Oc776gnGd8Tmc1NM6RGRnp0g==}
     engines: {node: '>=18'}
     peerDependencies:
       '@opentelemetry/api': ^1.9.0
@@ -2687,9 +2687,6 @@ packages:
 
   '@vitest/utils@4.0.9':
     resolution: {integrity: sha512-cEol6ygTzY4rUPvNZM19sDf7zGa35IYTm9wfzkHoT/f5jX10IOY7QleWSOh5T0e3I3WVozwK5Asom79qW8DiuQ==}
-
-  '@zone-eu/mailsplit@5.4.7':
-    resolution: {integrity: sha512-jApX86aDgolMz08pP20/J2zcns02NSK3zSiYouf01QQg4250L+GUAWSWicmS7eRvs+Z7wP7QfXrnkaTBGrIpwQ==}
 
   '@zone-eu/mailsplit@5.4.8':
     resolution: {integrity: sha512-eEyACj4JZ7sjzRvy26QhLgKEMWwQbsw1+QZnlLX+/gihcNH07lVPOcnwf5U6UAL7gkc//J3jVd76o/WS+taUiA==}
@@ -4133,8 +4130,8 @@ packages:
     engines: {node: '>=6.9.0'}
     hasBin: true
 
-  imapflow@1.1.1:
-    resolution: {integrity: sha512-cgK0eGagmw8C3pY6IiVLSF52N4bwvNRJ7mog4bdZOTafG90yNgUkShQBjo4/CRqvl/isPcaV1Gc0OmFBdXF0HQ==}
+  imapflow@1.2.0:
+    resolution: {integrity: sha512-xX4L/61Cw6oKKWN6QpQu3eeyWEvn5Qjc/XJf1ycsMSXT4GlAKlYJHaKqQvPf6UdLEPcrVUcdD4noLdfXzsGqQA==}
 
   import-fresh@3.3.1:
     resolution: {integrity: sha512-TR3KfrTZTYLPB6jUjfx6MF9WcWrHL9su5TObK4ZkYgBdWKPOFoSoQIdEuTuR82pmtxH2spWG9h6etwfr1pLBqQ==}
@@ -4865,10 +4862,6 @@ packages:
 
   node-releases@2.0.27:
     resolution: {integrity: sha512-nmh3lCkYZ3grZvqcCH+fjmQ7X+H0OeZgP40OierEaAptX4XofMh5kwNbWh7lBduUzCcV/8kZ+NDLCwm2iorIlA==}
-
-  nodemailer@7.0.10:
-    resolution: {integrity: sha512-Us/Se1WtT0ylXgNFfyFSx4LElllVLJXQjWi2Xz17xWw7amDKO2MLtFnVp1WACy7GkVGs+oBlRopVNUzlrGSw1w==}
-    engines: {node: '>=6.0.0'}
 
   nodemailer@7.0.11:
     resolution: {integrity: sha512-gnXhNRE0FNhD7wPSCGhdNh46Hs6nm+uTyg+Kq0cZukNQiYdnCsoQjodNP9BQVG9XrcK/v6/MgpAPBUFyzh9pvw==}
@@ -8231,9 +8224,9 @@ snapshots:
       domhandler: 5.0.3
       selderee: 0.11.0
 
-  '@sentry/core@10.29.0': {}
+  '@sentry/core@10.30.0': {}
 
-  '@sentry/node-core@10.29.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/core@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.208.0(@opentelemetry/api@1.9.0))(@opentelemetry/resources@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.38.0)':
+  '@sentry/node-core@10.30.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/core@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.208.0(@opentelemetry/api@1.9.0))(@opentelemetry/resources@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.38.0)':
     dependencies:
       '@apm-js-collab/tracing-hooks': 0.3.1
       '@opentelemetry/api': 1.9.0
@@ -8243,13 +8236,13 @@ snapshots:
       '@opentelemetry/resources': 2.2.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/sdk-trace-base': 2.2.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/semantic-conventions': 1.38.0
-      '@sentry/core': 10.29.0
-      '@sentry/opentelemetry': 10.29.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/core@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.38.0)
+      '@sentry/core': 10.30.0
+      '@sentry/opentelemetry': 10.30.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/core@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.38.0)
       import-in-the-middle: 2.0.0
     transitivePeerDependencies:
       - supports-color
 
-  '@sentry/node@10.29.0':
+  '@sentry/node@10.30.0':
     dependencies:
       '@opentelemetry/api': 1.9.0
       '@opentelemetry/context-async-hooks': 2.2.0(@opentelemetry/api@1.9.0)
@@ -8281,22 +8274,22 @@ snapshots:
       '@opentelemetry/sdk-trace-base': 2.2.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/semantic-conventions': 1.38.0
       '@prisma/instrumentation': 6.19.0(@opentelemetry/api@1.9.0)
-      '@sentry/core': 10.29.0
-      '@sentry/node-core': 10.29.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/core@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.208.0(@opentelemetry/api@1.9.0))(@opentelemetry/resources@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.38.0)
-      '@sentry/opentelemetry': 10.29.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/core@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.38.0)
+      '@sentry/core': 10.30.0
+      '@sentry/node-core': 10.30.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/core@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.208.0(@opentelemetry/api@1.9.0))(@opentelemetry/resources@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.38.0)
+      '@sentry/opentelemetry': 10.30.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/core@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.38.0)
       import-in-the-middle: 2.0.0
       minimatch: 9.0.5
     transitivePeerDependencies:
       - supports-color
 
-  '@sentry/opentelemetry@10.29.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/core@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.38.0)':
+  '@sentry/opentelemetry@10.30.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/core@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.2.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.38.0)':
     dependencies:
       '@opentelemetry/api': 1.9.0
       '@opentelemetry/context-async-hooks': 2.2.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/core': 2.2.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/sdk-trace-base': 2.2.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/semantic-conventions': 1.38.0
-      '@sentry/core': 10.29.0
+      '@sentry/core': 10.30.0
 
   '@sindresorhus/is@4.6.0': {}
 
@@ -8725,12 +8718,6 @@ snapshots:
     dependencies:
       '@vitest/pretty-format': 4.0.9
       tinyrainbow: 3.0.3
-
-  '@zone-eu/mailsplit@5.4.7':
-    dependencies:
-      libbase64: 1.3.0
-      libmime: 5.3.7
-      libqp: 2.1.1
 
   '@zone-eu/mailsplit@5.4.8':
     dependencies:
@@ -10364,15 +10351,15 @@ snapshots:
 
   image-size@0.7.5: {}
 
-  imapflow@1.1.1:
+  imapflow@1.2.0:
     dependencies:
-      '@zone-eu/mailsplit': 5.4.7
+      '@zone-eu/mailsplit': 5.4.8
       encoding-japanese: 2.2.0
       iconv-lite: 0.7.0
       libbase64: 1.3.0
       libmime: 5.3.7
       libqp: 2.1.1
-      nodemailer: 7.0.10
+      nodemailer: 7.0.11
       pino: 10.1.0
       socks: 2.8.7
 
@@ -11179,8 +11166,6 @@ snapshots:
       - utf-8-validate
 
   node-releases@2.0.27: {}
-
-  nodemailer@7.0.10: {}
 
   nodemailer@7.0.11: {}
 
