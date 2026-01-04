@@ -88,7 +88,10 @@ export default defineConfig({
         'node:module': path.resolve('./lib/shims/node-module.ts'),
         'dotenv/config': path.resolve('./lib/shims/dotenv-config.ts'),
         '@sentry/node': path.resolve('./lib/shims/sentry-node.ts'),
+        'xxhash-wasm': path.resolve('./lib/shims/xxhash-wasm.ts'),
         // Routes file with Worker-specific build (match relative import from lib/)
         '../assets/build/routes.js': path.resolve('./assets/build/routes-worker.js'),
+        // routes.json is only used in test environment, but rolldown still tries to resolve it
+        '../assets/build/routes.json': path.resolve('./assets/build/routes-worker.js'),
     },
 });
