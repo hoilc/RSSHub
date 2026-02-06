@@ -78,7 +78,7 @@
         "cross-env": "10.1.0",
         "crypto-js": "4.2.0",
         "currency-symbol-map": "5.1.0",
-        "dayjs": "1.11.8",
+        "dayjs": "1.11.19",
         "destr": "2.0.5",
         "dotenv": "17.2.4",
         "entities": "7.0.1",
@@ -86,7 +86,7 @@
         "fanfou-sdk": "6.0.0",
         "form-data": "4.0.5",
         "google-play-scraper": "10.1.2",
-        "googleapis": "171.2.0",
+        "googleapis": "171.4.0",
         "header-generator": "2.1.80",
         "hono": "4.11.8",
         "html-to-text": "9.0.5",
@@ -197,7 +197,7 @@
         "unified": "11.0.5",
         "vite-tsconfig-paths": "6.0.5",
         "vitest": "4.0.9",
-        "wrangler": "4.62.0",
+        "wrangler": "4.63.0",
         "yaml-eslint-parser": "2.0.0"
     },
     "lint-staged": {
