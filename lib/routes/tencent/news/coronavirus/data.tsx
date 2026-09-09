@@ -8,29 +8,38 @@ import { getData } from './utils';
 
 export const route: Route = {
     path: '/news/coronavirus/data/:province?/:city?',
-    name: 'Unknown',
+    categories: ['other'],
+    example: '/tencent/news/coronavirus/data/湖北/武汉',
+    parameters: {
+        province: '省/直辖市名，缺省则返回国内数据',
+        city: '城市名，缺省则返回全省数据。直辖市请使用区/县名。',
+    },
+    name: '新型冠状病毒肺炎疫情实时追踪 - 省市疫情数据',
     maintainers: ['CaoMeiYouRen'],
     handler,
 };
+
+interface AreaNode {
+    name: string;
+    today?: { confirm?: number };
+    total?: { nowConfirm?: number; confirm?: number; dead?: number; mtime?: string };
+    children?: AreaNode[];
+}
 
 async function handler(ctx) {
     const province = ctx.req.param('province') || '';
     const city = ctx.req.param('city') || '';
 
     const link = 'https://news.qq.com/zt2020/page/feiyan.htm#/';
-    const item = [];
+    const item: any[] = [];
 
     const diseaseh5Shelf = (await getData(['diseaseh5Shelf']))?.data?.diseaseh5Shelf || {};
     const { lastUpdateTime, areaTree } = diseaseh5Shelf;
     const nationalData = areaTree?.[0];
     const provinceList = nationalData?.children;
 
-    let todayConfirm = 0;
-    let totalNowConfirm = 0;
-    let totalConfirm = 0;
-    let totalDead = 0;
-    let coronavirusData = {};
-    let placeName = '';
+    let coronavirusData: AreaNode | undefined;
+    let placeName: string;
 
     if (!province || province === '中国' || province === '全国') {
         // 没有传参则取全国
@@ -51,10 +60,10 @@ async function handler(ctx) {
     if (!coronavirusData) {
         throw new InvalidParameterError(`未找到 ${placeName} 的疫情数据，请检查输入的省市名称是否正确`);
     }
-    todayConfirm = coronavirusData.today?.confirm;
-    totalNowConfirm = coronavirusData.total?.nowConfirm;
-    totalConfirm = coronavirusData.total?.confirm;
-    totalDead = coronavirusData.total?.dead;
+    const todayConfirm = coronavirusData.today?.confirm;
+    const totalNowConfirm = coronavirusData.total?.nowConfirm;
+    const totalConfirm = coronavirusData.total?.confirm;
+    const totalDead = coronavirusData.total?.dead;
     const pubDate = parseDate(coronavirusData.total?.mtime || lastUpdateTime);
 
     const title = `${placeName} - 腾讯新闻 - 新型冠状病毒肺炎疫情实时追踪`;

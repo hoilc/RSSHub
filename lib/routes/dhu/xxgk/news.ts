@@ -36,9 +36,9 @@ async function handler() {
         $('.cols_list > li')
             .toArray()
             .map(async (item) => {
-                item = $(item);
-                const colsTitle = item.find('.cols_title > a');
-                const colsMeta = item.find('.cols_meta');
+                const $item = $(item);
+                const colsTitle = $item.find('.cols_title > a');
+                const colsMeta = $item.find('.cols_meta');
 
                 // article meta
                 const link = colsTitle.attr('href');
@@ -51,11 +51,11 @@ async function handler() {
                 return await cache.tryGet(url, async () => {
                     // fetch article content
                     // some contents are only available for internal network
-                    let description = '';
+                    let description: string;
                     try {
                         const { data: response } = await got(url);
                         const $ = load(response);
-                        description = $('.wp_articlecontent').first().html() ?? '';
+                        description = $('.wp_articlecontent').html() ?? '';
                     } catch {
                         description = '';
                     }

@@ -2,7 +2,7 @@ import { load } from 'cheerio';
 import type { Context } from 'hono';
 
 import InvalidParameterError from '@/errors/types/invalid-parameter';
-import type { Data, DataItem, Route } from '@/types';
+import type { Data, Route } from '@/types';
 import ofetch from '@/utils/ofetch';
 import { parseDate } from '@/utils/parse-date';
 
@@ -21,7 +21,8 @@ async function handler(ctx: Context): Promise<Data> {
         throw new InvalidParameterError(`unknown site: ${site}`);
     }
     const link = `https://${INSTANCES.get(site)}/show_bug.cgi?id=${bugId}`;
-    const $ = load(await ofetch(`${link}&ctype=xml`));
+    const xml = await ofetch(`${link}&ctype=xml`);
+    const $ = load(xml);
     const items = $('long_desc').map((index, rawItem) => {
         const $ = load(rawItem, null, false);
         return {
@@ -30,13 +31,13 @@ async function handler(ctx: Context): Promise<Data> {
             description: $('thetext').text(),
             pubDate: parseDate($('bug_when').text()),
             author: $('who').attr('name'),
-        } as DataItem;
+        };
     });
     return { title: $('short_desc').text(), link, item: items.toArray() };
 }
 
 function markdownFrom(instances: Map<string, string>, separator: string = ', '): string {
-    return [...instances.entries()].map(([k, v]) => `[\`${k}\`](https://${v})`).join(separator);
+    return [...instances].map(([k, v]) => `[\`${k}\`](https://${v})`).join(separator);
 }
 
 export const route: Route = {

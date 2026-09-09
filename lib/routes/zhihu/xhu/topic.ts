@@ -49,11 +49,11 @@ async function handler(ctx) {
         link,
         item: listRes.map(({ target: item }) => {
             const type = item.type;
-            let title = '';
-            let description = '';
-            let link = '';
-            let pubDate = new Date();
-            let author = '';
+            let title: string | undefined;
+            let description: string;
+            let link: string | undefined;
+            let pubDate: Date | undefined;
+            let author: string | undefined;
 
             switch (type) {
                 case 'answer':

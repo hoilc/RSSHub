@@ -31,10 +31,10 @@ export const route: Route = {
     handler,
     description: `如果订阅 [新闻和报纸摘要](http://www.radio.cn/pc-portal/sanji/zhibo_2.html?name=1395528)，其 URL 为 \`http://www.radio.cn/pc-portal/sanji/zhibo_2.html?name=1395528\`，可以得到 \`name\` 为 \`1395528\`
 
-  所以对应路由为 [\`/radio/zhibo/1395528\`](https://rsshub.app/radio/zhibo/1395528)
+所以对应路由为 [\`/radio/zhibo/1395528\`](https://rsshub.app/radio/zhibo/1395528)
 
 ::: tip
-  查看更多电台直播节目，可前往 [电台直播](http://www.radio.cn/pc-portal/erji/radioStation.html)
+查看更多电台直播节目，可前往 [电台直播](http://www.radio.cn/pc-portal/erji/radioStation.html)
 :::`,
 };
 
@@ -72,7 +72,7 @@ async function handler(ctx) {
 
     const items = data.map((item) => {
         let enclosure_url = item.playUrlHigh ?? item.playUrlLow;
-        enclosure_url = /\.m3u8$/.test(enclosure_url) ? item.downloadUrl : enclosure_url;
+        enclosure_url = enclosure_url.endsWith('.m3u8') ? item.downloadUrl : enclosure_url;
         const file_ext = new URL(enclosure_url).pathname.split('.').pop();
         const enclosure_type = file_ext ? `audio/${audio_types[file_ext]}` : '';
 

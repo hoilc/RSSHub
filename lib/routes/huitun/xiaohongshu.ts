@@ -22,7 +22,7 @@ export const route: Route = {
         supportPodcast: false,
         supportScihub: false,
     },
-    description: `免费版账户每天查询次数为10次, 若需增加查询次数请购买灰豚数据红薯版会员`,
+    description: '免费版账户每天查询次数为 10 次，若需增加查询次数请购买灰豚数据红薯版会员',
     name: '小红书笔记',
     maintainers: ['Skylwn'],
     handler,
@@ -55,7 +55,7 @@ async function handler(ctx) {
     const notes = note_data.extData.list;
     const items = await Promise.all(
         notes.map(async (item) => {
-            let desc = '';
+            let desc: string;
             switch (item.type) {
                 case 'normal':
                     desc = `<p><img src="${item.imageUrl}"></p>`;

@@ -16,10 +16,10 @@ const md = MarkdownIt({
 
 const baseUrl = 'https://www.dgtle.com';
 
-const ProcessItems = async (limit: number, dataList: any): Promise<DataItem[]> => {
-    let items: DataItem[] = [];
+type LiveDataItem = DataItem & { live_status?: any };
 
-    items = dataList.slice(0, limit).map((item): DataItem => {
+const ProcessItems = async (limit: number, dataList: any): Promise<DataItem[]> => {
+    let items: LiveDataItem[] = dataList.slice(0, limit).map((item): LiveDataItem => {
         const title: string = item.title || item.content;
         const image: string | undefined = item.cover;
         const description: string | undefined = renderDescription({
@@ -46,7 +46,7 @@ const ProcessItems = async (limit: number, dataList: any): Promise<DataItem[]> =
         const guid = `dgtle-${item.id}`;
         const updated: number | string = pubDate;
 
-        const processedItem: DataItem = {
+        const processedItem: LiveDataItem = {
             title,
             description,
             pubDate: pubDate ? parseDate(pubDate, 'X') : undefined,
@@ -78,7 +78,7 @@ const ProcessItems = async (limit: number, dataList: any): Promise<DataItem[]> =
             delete item.live_status;
 
             return cache.tryGet(item.link, async (): Promise<DataItem> => {
-                const detailResponse = await ofetch(item.link);
+                const detailResponse = await ofetch(item.link!);
                 const $$: CheerioAPI = load(detailResponse);
 
                 $$('div.logo').remove();
@@ -103,10 +103,10 @@ const ProcessItems = async (limit: number, dataList: any): Promise<DataItem[]> =
                 });
 
                 const description: string | undefined = renderDescription({
-                    description: $$('div.whale_news_detail-daily-content, div#articleContent, div.forum-viewthread-article-box').html(),
+                    description: $$('div.whale_news_detail-daily-content, div#articleContent, div.forum-viewthread-article-box').html() ?? undefined,
                 });
 
-                const processedItem: DataItem = {
+                const processedItem: Partial<DataItem> = {
                     description,
                 };
 
@@ -134,7 +134,7 @@ const ProcessFeedItems = (limit: number, dataList: any, $: CheerioAPI): DataItem
         });
         const pubDate: number | string = item.created_at;
         const linkUrl: string | undefined = item.url;
-        const categories: string[] = [...new Set((item.tags_info?.map((t) => t.title) ?? []).filter(Boolean) as string[])];
+        const categories: string[] = [...new Set<string>((item.tags_info?.map((t) => t.title) ?? []).filter(Boolean))];
         const authors: DataItem['author'] = [
             {
                 name: item.user_name,

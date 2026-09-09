@@ -27,7 +27,7 @@ export const route: Route = {
         },
     ],
     name: 'Regear New Arrivals',
-    maintainers: ['EthanWng97'],
+    maintainers: ['IvanWng97'],
     handler,
     url: 'regear.arcteryx.com/shop/new-arrivals',
 };
@@ -42,39 +42,36 @@ async function handler() {
     const data = response.data;
     const $ = load(data);
     const contents = $('script:contains("window.__PRELOADED_STATE__")').text();
-    const regex = /{.*}/;
-    let items = JSON.parse(contents.match(regex)[0]).shop.items;
+    const regex = /\{.*\}/;
+    let items = JSON.parse(contents.match(regex)![0]).shop.items;
     items = items.filter((item) => item.availableSizes.length !== 0);
 
     const list = items.map((item) => {
+        const imgUrl = JSON.parse(item.imageUrls).front;
+        const originalPrice = getUSDPrice(item.originalPrice);
+        const regearPrice = item.priceRange[0] === item.priceRange[1] ? getUSDPrice(item.priceRange[0]) : `${getUSDPrice(item.priceRange[0])} - ${getUSDPrice(item.priceRange[1])}`;
         const data = {
             title: item.displayTitle,
             link: item.pdpLink.url,
-            imgUrl: JSON.parse(item.imageUrls).front,
-            availableSizes: item.availableSizes,
-            color: item.color,
-            originalPrice: getUSDPrice(item.originalPrice),
-            regearPrice: item.priceRange[0] === item.priceRange[1] ? getUSDPrice(item.priceRange[0]) : `${getUSDPrice(item.priceRange[0])} - ${getUSDPrice(item.priceRange[1])}`,
-            description: '',
+            description: renderToString(
+                <div>
+                    Available Sizes:&nbsp;
+                    {item.availableSizes.map((size) => (
+                        <>{size}&nbsp;</>
+                    ))}
+                    <br />
+                    Color: {item.color}
+                    <br />
+                    Original Price: {originalPrice}
+                    <br />
+                    Regear Price: {regearPrice}
+                    <br />
+                    <img src={imgUrl} />
+                    <br />
+                    <br />
+                </div>
+            ),
         };
-        data.description = renderToString(
-            <div>
-                Available Sizes:&nbsp;
-                {data.availableSizes.map((size) => (
-                    <>{size}&nbsp;</>
-                ))}
-                <br />
-                Color: {data.color}
-                <br />
-                Original Price: {data.originalPrice}
-                <br />
-                Regear Price: {data.regearPrice}
-                <br />
-                <img src={data.imgUrl} />
-                <br />
-                <br />
-            </div>
-        );
         return data;
     });
 
@@ -82,10 +79,6 @@ async function handler() {
         title: 'Arcteryx - Regear - New Arrivals',
         link: url,
         description: 'Arcteryx - Regear - New Arrivals',
-        item: list.map((item) => ({
-            title: item.title,
-            link: item.link,
-            description: item.description,
-        })),
+        item: list,
     };
 }

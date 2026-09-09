@@ -59,18 +59,18 @@ const handler: Route['handler'] = async () => {
                             image: 'http://210.26.0.114:9090/mdxg/img/weex/default_img.jpg',
                             content,
                             updated: item.date,
-                            language: 'zh-cn',
+                            language: 'zh-CN',
                         };
                     })
                 )
             )) as DataItem[],
             allowEmpty: true,
-            language: 'zh-cn',
+            language: 'zh-CN',
             feedLink: 'https://rsshub.app/xbmu/announcement',
             id: 'https://rsshub.app/xbmu/announcement',
         };
     } catch (error) {
-        throw new Error(`Error fetching announcements: ${error}`);
+        throw new Error(`Error fetching announcements: ${error}`, { cause: error });
     }
 };
 

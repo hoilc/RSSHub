@@ -100,11 +100,11 @@ async function handler(ctx) {
 
                 // 提取文章内容 - 只使用主要内容选择器
                 const content = $detail('.v_news_content');
-                let description = '';
+                let description: string;
 
                 if (content.length > 0) {
                     // 清理内容
-                    content.find('script, style, .print, .share').remove();
+                    content.find('style, .print, .share').remove();
                     description = content.html() || '';
                 } else {
                     description = '内容获取失败，请点击查看原文';

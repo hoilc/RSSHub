@@ -2,7 +2,7 @@ import { load } from 'cheerio';
 import { raw } from 'hono/html';
 import { renderToString } from 'hono/jsx/dom/server';
 
-import type { Route } from '@/types';
+import type { DataItem, Route } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
 import { parseDate } from '@/utils/parse-date';
@@ -29,29 +29,28 @@ export const route: Route = {
 async function handler(ctx) {
     const baseUrl = 'https://www.nikkei.com';
     const { category, article_type = 'paid' } = ctx.req.param();
-    let url = '';
-    url = category === 'news' ? `${baseUrl}/news/category/` : `${baseUrl}/${category}/archive/`;
+    const url = category === 'news' ? `${baseUrl}/news/category/` : `${baseUrl}/${category}/archive/`;
 
     const response = await got(url);
     const data = response.data;
     const $ = load(data);
 
-    let categoryName = '';
+    let categoryName: string;
     const listSelector = $('[class^="container_"]  [class^="default_"]:has(article)');
     const paidSelector = 'img[class^="icon_"]';
 
-    let list = listSelector.toArray().map((item) => {
-        item = $(item);
-        item.find('p a').remove();
+    let list = listSelector.toArray().map((item): DataItem & { paywall: boolean } => {
+        const $item = $(item);
+        $item.find('p a').remove();
         return {
-            title: item.find('[class^="titleLink_"]').text(),
-            link: `${baseUrl}${item.find('[class^="title_"] a').attr('href')}`,
-            image: item.find('[class^="image_"] img').removeAttr('style').removeAttr('width').removeAttr('height').parent().html(),
-            category: item
+            title: $item.find('[class^="titleLink_"]').text(),
+            link: `${baseUrl}${$item.find('[class^="title_"] a').attr('href')}`,
+            image: $item.find('[class^="image_"] img').removeAttr('style').removeAttr('width').removeAttr('height').parent().html() ?? undefined,
+            category: $item
                 .find('[class^="topicItem_"] a')
                 .toArray()
                 .map((item) => $(item).text()),
-            paywall: !!item.find(paidSelector).length,
+            paywall: !!$item.find(paidSelector).length,
         };
     });
 
@@ -62,16 +61,16 @@ async function handler(ctx) {
             ...$('div#CONTENTS_MAIN .m-miM32_itemTitle')
                 .toArray()
                 .map((item) => {
-                    item = $(item);
-                    const a = item.find('a').first();
+                    const $item = $(item);
+                    const a = $item.find('a').first();
                     return {
                         title: a.text(),
                         link: `${baseUrl}${a.attr('href')}`,
-                        category: item
+                        category: $item
                             .find('.m-miM32_itemkeyword a')
                             .toArray()
                             .map((item) => $(item).text()),
-                        paywall: !!item.find(paidSelector).length,
+                        paywall: !!$item.find(paidSelector).length,
                     };
                 }),
         ];
@@ -81,13 +80,13 @@ async function handler(ctx) {
 
     const items = await Promise.all(
         list.map((item) =>
-            cache.tryGet(item.link, async () => {
+            cache.tryGet(item.link!, async () => {
                 const { data: response } = await got(item.link);
                 const $ = load(response);
 
                 $('.notFloated_n1oadkwi').remove();
 
-                item.pubDate = parseDate($('meta[property="article:published_time"]').attr('content'));
+                item.pubDate = parseDate($('meta[property="article:published_time"]').attr('content')!);
                 const description = $('section[class^=container_]').html();
                 item.description = renderToString(
                     <>
@@ -111,7 +110,7 @@ async function handler(ctx) {
         description: $('meta[name="description"]').attr('content'),
         link: url,
         image: $('meta[property="og:image"]').attr('content'),
-        language: 'ja',
+        language: 'ja' as const,
         item: article_type === 'free' ? items.filter((item) => !item.paywall) : items,
     };
 }

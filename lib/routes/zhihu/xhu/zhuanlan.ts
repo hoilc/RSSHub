@@ -31,7 +31,7 @@ export const route: Route = {
 };
 
 async function handler(ctx) {
-    const xhuCookie = await auth.getCookie(ctx);
+    const xhuCookie = await auth.getCookie();
     const id = ctx.req.param('id');
     const link = `https://www.zhihu.com/column/${id}`;
 
@@ -67,9 +67,9 @@ async function handler(ctx) {
                 description = $.html();
             }
 
-            let title = '';
-            let link = '';
-            let author = '';
+            let title: string;
+            let link: string;
+            let author: string;
             let pubDate;
 
             // The xhu api only get items of type article.

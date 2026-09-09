@@ -3,7 +3,7 @@ import { raw } from 'hono/html';
 import { renderToString } from 'hono/jsx/dom/server';
 
 import { config } from '@/config';
-import type { Route } from '@/types';
+import type { DataItem, Route } from '@/types';
 import { ViewType } from '@/types';
 import cache from '@/utils/cache';
 import got from '@/utils/got';
@@ -72,7 +72,7 @@ async function handler(ctx) {
         return _r;
     });
 
-    let resultItems = null;
+    let resultItems: DataItem[];
     if (ctx.req.param('fulltext') === 'fulltext') {
         const cardslist = data.cards[0].card_group;
         // Topic List
@@ -130,7 +130,7 @@ async function fetchContent(url) {
         const rdata = subres.data;
         const cards = rdata.data.cards;
         // Need to find one cards with 'type ==9'
-        demostr = seekContent(cards);
+        demostr = seekContent(cards) ?? '';
     } catch {
         // console.log(e);
         // console.log(url);
@@ -205,9 +205,8 @@ function seekContent(clist) {
                         : [],
             });
             stub.append(section);
-        }
-        if (curitem.card_type === 11) {
-            stub.append(seekContent(curitem.card_group));
+        } else if (curitem.card_type === 11) {
+            stub.append(seekContent(curitem.card_group) ?? '');
         }
     }
     return stub.html();

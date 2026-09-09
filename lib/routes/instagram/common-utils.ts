@@ -9,7 +9,7 @@ const renderItems = (items) =>
         // Content
         const summary = item.caption?.text ?? '';
 
-        let description = '';
+        let description: string;
         switch (productType) {
             case 'carousel_container': {
                 const images = item.carousel_media.map((i) => ({
@@ -45,7 +45,7 @@ const renderItems = (items) =>
         // Metadata
         const url = `https://www.instagram.com/p/${item.code}/`;
         const pubDate = parseDate(item.caption?.created_at_utc || item.taken_at, 'X');
-        const title = summary.split('\n')[0];
+        const title = summary.split('\n', 1)[0];
 
         return {
             title,

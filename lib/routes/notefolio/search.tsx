@@ -174,15 +174,16 @@ async function handler(ctx) {
     const { limit } = ctx.req.query();
 
     // 请求链接
-    let searchUrl = `https://api.stunning.kr/api/v1/dantats/portfolio?state=Public&limit=${limit ? Number.parseInt(limit, 10) : 20}&search=${query}&orderBy=${order}`;
+    let searchUrl = `https://api.stunning.kr/api/v1/dantats/portfolio?state=Public&limit=${limit ? Number(limit) : 20}&search=${query}&orderBy=${order}`;
     // 分类
     const index = (Number(category) || 0) - 1;
-    if (index >= 0 && categoryMap[index]) {
-        searchUrl += `&category=${categoryMap[index].category}`;
+    const matchedCategory = categoryMap[index];
+    if (index >= 0 && matchedCategory) {
+        searchUrl += `&category=${matchedCategory.category}`;
     }
     // 时间范围
     if (time !== 'all' && ['one-day', 'week', 'month', 'three-month'].includes(time)) {
-        let startTime = '';
+        let startTime: string;
         const endTime = dayjs().endOf('d').format('YYYY-MM-DDTHH:mm:ss.SSS');
 
         // 过去24小时-day 最近一周-week 最近一个月-month 最近三个月three-month
